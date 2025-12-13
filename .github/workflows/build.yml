@@ -31,7 +31,7 @@ jobs:
       - name: Checkout Kernel Source
         uses: actions/checkout@v4
         with:
-          repository: maazm7d/kernel_samsung_a12
+          repository: Samo1408/M12ksun
           path: kernel_root
           ref: ${{ github.event.inputs.BRANCH }}
           show-progress: false
@@ -61,7 +61,7 @@ jobs:
       - name: Clone KernelSU-Next
         if: ${{ github.event.inputs.KERNELSU_NEXT == 'true' }}
         run: |
-          curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -
+          curl -LSs "https://raw.githubusercontent.com/Samo1408/Ksunxt-susfs/next-susfs/kernel/setup.sh" | bash -
         working-directory: kernel_root
  
       - name: Build kernel
@@ -76,9 +76,9 @@ jobs:
           export IS_CI=true
           
 
-          export DEFCONFIG="exynos850-a12snsxx_defconfig"
-          export DEVICE_ID="A12s"
-          export KERNEL_SOURCE="https://github.com/maazm7d/kernel_samsung_a12"
+          export DEFCONFIG="exynos850-m12snsxx_defconfig"
+          export DEVICE_ID="M12"
+          export KERNEL_SOURCE="https://github.com/Samo1408/M12ksun"
 
           if [[ "${{ github.event.inputs.SELINUX_PERMISSIVE }}" == 'true' ]]; then
           echo "Switching SELinux to Permissive mode..."
