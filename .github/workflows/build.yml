@@ -29,7 +29,7 @@ jobs:
       - name: Checkout Kernel Source
         uses: actions/checkout@v4
         with:
-          repository: maazm7d/kernel_samsung_m12
+          repository: Samo1408/M12ksun
           path: kernel_root
           ref: ${{ github.event.inputs.BRANCH }}
           show-progress: false
@@ -49,10 +49,10 @@ jobs:
           git clone --depth=1 -b androidcc-4.9 https://github.com/rsuntk/toolchains.git google
         working-directory: kernel_root
 
-      - name: Set timezone (Asia/Kolkata)
+      - name: Set timezone (Asia/Seoul)
         run: |
           sudo rm /etc/localtime
-          sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+          sudo ln -s /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
       - name: Build kernel
         id: buildKernel
@@ -60,14 +60,14 @@ jobs:
           export PATH=$(pwd)/toolchains/clang/bin:$PATH
           export CROSS_COMPILE=$(pwd)/toolchains/google/bin/aarch64-linux-android-
           export CLANG_TRIPLE=aarch64-linux-gnu-
-          export KBUILD_BUILD_USER="maaz"
-          export KBUILD_BUILD_HOST="github"
+          export KBUILD_BUILD_USER="samo"
+          export KBUILD_BUILD_HOST="samo1408"
           export BUILD_START=`date`
           export IS_CI=true
 
           export DEFCONFIG="exynos850-m12nsxx_defconfig"
           export DEVICE_ID="M12"
-          export K_S="https://github.com/maazm7d/kernel_samsung_m12"
+          export K_S="https://github.com/Samo1408/M12ksun"
 
           bash $(pwd)/build_kernel.sh kernel --jobs $(nproc --all) $DEFCONFIG
         
