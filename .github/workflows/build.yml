@@ -76,7 +76,7 @@ jobs:
           export IS_CI=true
           
 
-          export DEFCONFIG="exynos850-m12snsxx_defconfig"
+          export DEFCONFIG="exynos850-m12nsxx_defconfig"
           export DEVICE_ID="M12"
           export KERNEL_SOURCE="https://github.com/Samo1408/M12ksun"
 
