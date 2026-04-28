@@ -5,7 +5,7 @@ on:
     inputs:
       BRANCH:
         description: Kernel branch
-        default: '2nd'
+        default: 'm12nsxx-dts'
         required: true
       AK3_NAME:
         description: Enter custom name for AnyKernel3 artifact
@@ -31,7 +31,7 @@ jobs:
       - name: Checkout Kernel Source
         uses: actions/checkout@v4
         with:
-          repository: Samo1408/Kernel_M127G
+          repository: Samo1408/m12kernel
           path: kernel_root
           ref: ${{ github.event.inputs.BRANCH }}
           show-progress: false
@@ -76,9 +76,9 @@ jobs:
           export IS_CI=true
           
 
-          export DEFCONFIG="physwizz_defconfig"
+          export DEFCONFIG="rsuntk-m12-susfs_defconfig"
           export DEVICE_ID="M12"
-          export KERNEL_SOURCE="https://github.com/Samo1408/Kernel_M127G"
+          export KERNEL_SOURCE="https://github.com/Samo1408/m12kernel"
 
           if [[ "${{ github.event.inputs.SELINUX_PERMISSIVE }}" == 'true' ]]; then
           echo "Switching SELinux to Permissive mode..."
